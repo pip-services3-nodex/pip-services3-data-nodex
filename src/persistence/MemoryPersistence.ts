@@ -313,7 +313,7 @@ export class MemoryPersistence<T> implements IConfigurable, IReferenceable, IOpe
      */
     public async create(correlationId: string, item: T): Promise<T> {
         // Clone the object
-        item = JSON.parse(JSON.stringify(item));
+        item = Object.assign({}, item);
 
         this._items.push(item);
         this._logger.trace(correlationId, "Created item %s", item['id']);

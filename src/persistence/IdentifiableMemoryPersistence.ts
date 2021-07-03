@@ -120,7 +120,7 @@ export class IdentifiableMemoryPersistence<T extends IIdentifiable<K>, K> extend
     public async create(correlationId: string, item: T): Promise<T> {
         if (item.id == null) {
             // Clone the object
-            item = JSON.parse(JSON.stringify(item));
+            item = Object.assign({}, item);
             ObjectWriter.setProperty(item, "id", IdGenerator.nextLong());
         }
 
@@ -137,7 +137,7 @@ export class IdentifiableMemoryPersistence<T extends IIdentifiable<K>, K> extend
      */
     public async set(correlationId: string, item: T): Promise<T> {
         // Clone the object
-        item = JSON.parse(JSON.stringify(item));
+        item = Object.assign({}, item);
 
         if (item.id == null) {
             ObjectWriter.setProperty(item, "id", IdGenerator.nextLong());
@@ -174,7 +174,7 @@ export class IdentifiableMemoryPersistence<T extends IIdentifiable<K>, K> extend
         }
 
         // Clone the object
-        item = JSON.parse(JSON.stringify(item));
+        item = Object.assign({}, item);
 
         this._items[index] = item;
         this._logger.trace(correlationId, "Updated item %s", item.id);

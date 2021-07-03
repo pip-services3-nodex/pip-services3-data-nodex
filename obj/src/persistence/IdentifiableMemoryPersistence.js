@@ -124,7 +124,7 @@ class IdentifiableMemoryPersistence extends MemoryPersistence_1.MemoryPersistenc
         return __awaiter(this, void 0, void 0, function* () {
             if (item.id == null) {
                 // Clone the object
-                item = JSON.parse(JSON.stringify(item));
+                item = Object.assign({}, item);
                 pip_services3_commons_nodex_1.ObjectWriter.setProperty(item, "id", pip_services3_commons_nodex_2.IdGenerator.nextLong());
             }
             return yield _super.create.call(this, correlationId, item);
@@ -141,7 +141,7 @@ class IdentifiableMemoryPersistence extends MemoryPersistence_1.MemoryPersistenc
     set(correlationId, item) {
         return __awaiter(this, void 0, void 0, function* () {
             // Clone the object
-            item = JSON.parse(JSON.stringify(item));
+            item = Object.assign({}, item);
             if (item.id == null) {
                 pip_services3_commons_nodex_1.ObjectWriter.setProperty(item, "id", pip_services3_commons_nodex_2.IdGenerator.nextLong());
             }
@@ -172,7 +172,7 @@ class IdentifiableMemoryPersistence extends MemoryPersistence_1.MemoryPersistenc
                 return null;
             }
             // Clone the object
-            item = JSON.parse(JSON.stringify(item));
+            item = Object.assign({}, item);
             this._items[index] = item;
             this._logger.trace(correlationId, "Updated item %s", item.id);
             yield this.save(correlationId);

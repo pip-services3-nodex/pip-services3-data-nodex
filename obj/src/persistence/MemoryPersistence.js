@@ -296,7 +296,7 @@ class MemoryPersistence {
     create(correlationId, item) {
         return __awaiter(this, void 0, void 0, function* () {
             // Clone the object
-            item = JSON.parse(JSON.stringify(item));
+            item = Object.assign({}, item);
             this._items.push(item);
             this._logger.trace(correlationId, "Created item %s", item['id']);
             yield this.save(correlationId);
