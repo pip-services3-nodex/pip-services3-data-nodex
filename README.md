@@ -10,11 +10,11 @@ The module contains the following packages:
 - **Persistence** - in-memory and file persistence components, as well as JSON persister class.
 
 <a name="links"></a> Quick links:
-* [Memory persistence](https://www.pipservices.org/recipies/memory-persistence)
+* [Memory persistence](http://docs.pipservices.org/toolkit/recipes/memory_persistence/)
 * [API Reference](https://pip-services3-nodex.github.io/pip-services3-data-nodex/globals.html)
 * [Change Log](CHANGELOG.md)
-* [Get Help](https://www.pipservices.org/community/help)
-* [Contribute](https://www.pipservices.org/community/contribute)
+* [Get Help](http://docs.pipservices.org/get_help/)
+* [Contribute](http://docs.pipservices.org/contribute/)
 
 ## Use
 
