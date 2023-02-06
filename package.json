@@ -1,6 +1,6 @@
 {
     "name": "pip-services3-data-nodex",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "author": "Conceptual Vision Consulting LLC",
     "description": "Data persistence for Pip.Services in Node.js / ES2017",
     "contributors": [
@@ -34,14 +34,14 @@
         "retest": "tsc && mocha -t 10000 -R spec -u tdd --recursive ./obj/test"
     },
     "dependencies": {
-        "pip-services3-commons-nodex": "^1.0.0",
-        "pip-services3-components-nodex": "^1.0.0"
+        "pip-services3-commons-nodex": "^1.0.4",
+        "pip-services3-components-nodex": "^1.0.2"
     },
     "devDependencies": {
         "@types/chai": "^4.0.0",
-        "@types/mocha": "^8.0.0",
+        "@types/mocha": "^10.0.1",
         "@types/node": "*",
         "chai": "^4.3.4",
-        "mocha": "^8.3.2"
+        "mocha": "^10.2.0"
     }
 }
