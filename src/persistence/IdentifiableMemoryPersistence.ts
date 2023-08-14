@@ -118,7 +118,7 @@ export class IdentifiableMemoryPersistence<T extends IIdentifiable<K>, K> extend
      * @returns                a created data item.
      */
     public async create(correlationId: string, item: T): Promise<T> {
-        if (item.id == null) {
+        if (this.isEmpty(item.id)) {
             // Clone the object
             item = Object.assign({}, item);
             ObjectWriter.setProperty(item, "id", IdGenerator.nextLong());
@@ -139,7 +139,7 @@ export class IdentifiableMemoryPersistence<T extends IIdentifiable<K>, K> extend
         // Clone the object
         item = Object.assign({}, item);
 
-        if (item.id == null) {
+        if (this.isEmpty(item.id)) {
             ObjectWriter.setProperty(item, "id", IdGenerator.nextLong());
         }
 
@@ -247,4 +247,19 @@ export class IdentifiableMemoryPersistence<T extends IIdentifiable<K>, K> extend
         await this.deleteByFilter(correlationId, filter);
     }
 
+    /**
+     * Checks if value is empty
+     * @param value any value
+     * @returns true if value empty, other false
+     */
+    protected isEmpty(value: any) {
+        const type = typeof value;
+        if (value !== null && type === 'object' || type === 'function') {
+          const props = Object.keys(value);
+           if (props.length === 0) { 
+             return true;
+           } 
+         } 
+         return !value;
+   }
 }

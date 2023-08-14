@@ -132,4 +132,10 @@ export declare class IdentifiableMemoryPersistence<T extends IIdentifiable<K>, K
      * @param ids               ids of data items to be deleted.
      */
     deleteByIds(correlationId: string, ids: K[]): Promise<void>;
+    /**
+     * Checks if value is empty
+     * @param value any value
+     * @returns true if value empty, other false
+     */
+    protected isEmpty(value: any): boolean;
 }

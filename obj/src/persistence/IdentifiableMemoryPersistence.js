@@ -122,7 +122,7 @@ class IdentifiableMemoryPersistence extends MemoryPersistence_1.MemoryPersistenc
             create: { get: () => super.create }
         });
         return __awaiter(this, void 0, void 0, function* () {
-            if (item.id == null) {
+            if (this.isEmpty(item.id)) {
                 // Clone the object
                 item = Object.assign({}, item);
                 pip_services3_commons_nodex_1.ObjectWriter.setProperty(item, "id", pip_services3_commons_nodex_2.IdGenerator.nextLong());
@@ -142,7 +142,7 @@ class IdentifiableMemoryPersistence extends MemoryPersistence_1.MemoryPersistenc
         return __awaiter(this, void 0, void 0, function* () {
             // Clone the object
             item = Object.assign({}, item);
-            if (item.id == null) {
+            if (this.isEmpty(item.id)) {
                 pip_services3_commons_nodex_1.ObjectWriter.setProperty(item, "id", pip_services3_commons_nodex_2.IdGenerator.nextLong());
             }
             let index = this._items.map(item => item.id).indexOf(item.id);
@@ -236,6 +236,21 @@ class IdentifiableMemoryPersistence extends MemoryPersistence_1.MemoryPersistenc
             };
             yield this.deleteByFilter(correlationId, filter);
         });
+    }
+    /**
+     * Checks if value is empty
+     * @param value any value
+     * @returns true if value empty, other false
+     */
+    isEmpty(value) {
+        const type = typeof value;
+        if (value !== null && type === 'object' || type === 'function') {
+            const props = Object.keys(value);
+            if (props.length === 0) {
+                return true;
+            }
+        }
+        return !value;
     }
 }
 exports.IdentifiableMemoryPersistence = IdentifiableMemoryPersistence;
